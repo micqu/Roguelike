@@ -9,7 +9,7 @@
 //
 // Note:
 //   Set _shake to true, and time to anything above 0, when you want to activate the shake.
-**
+//
 */
 
 var xx, yy, dir, amount_x, amount_y;
