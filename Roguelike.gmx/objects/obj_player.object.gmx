@@ -96,7 +96,7 @@ scr_view_update(xx, yy, -1, intensity, time);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// OMG NICE SACE
+            <string>/// EIKIKEIKEIKEIKE
 // Get direction
 dir_x = (keyboard_check(k_rgt) - keyboard_check(k_lft));
 
