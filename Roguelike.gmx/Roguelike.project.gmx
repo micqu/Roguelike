@@ -7,8 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
-    <sprite>sprites\spr_wall_jt</sprite>
     <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_wall_jt</sprite>
     <sprite>sprites\spr_npc_lady</sprite>
     <sprite>sprites\spr_house</sprite>
     <sprite>sprites\spr_door</sprite>
@@ -22,8 +22,11 @@
   <objects name="objects">
     <object>objects\obj_c</object>
     <object>objects\obj_player</object>
-    <object>objects\par_wall</object>
-    <object>objects\par_wall_jt</object>
+    <objects name="Parents">
+      <object>objects\par_wall</object>
+      <object>objects\par_wall_jt</object>
+      <object>objects\par_interactable</object>
+    </objects>
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_jt</object>
     <object>objects\obj_npc_lady</object>
