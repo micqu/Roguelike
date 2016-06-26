@@ -109,10 +109,9 @@ dir_x = (keyboard_check(k_rgt) - keyboard_check(k_lft));
 image_speed = 0.2;
 
 // Image flipping
-if (dir_x != 0) {
-    image_xscale = dir_x;
-}
+image_xscale = sign(mouse_x - x);
 
+// Set speed and image
 if (dir_x == 0) {
     image_speed = 0;
     image_index = 1;
@@ -120,9 +119,12 @@ if (dir_x == 0) {
 } else {
     hspd = median(-max_hspd, hspd + (acc * sign(dir_x)), max_hspd);
 }
+
+if(sign(mouse_x - x) != sign(dir_x)){
+    hspd *= 0.8;
+}
     
-
-
+// Move object
 repeat ceil(abs(hspd + hspd * 2 * running)) {
     if (!place_meeting(x + sign(hspd), y, par_wall)) {
         x += sign(hspd);
@@ -131,7 +133,7 @@ repeat ceil(abs(hspd + hspd * 2 * running)) {
     }
 }
 
-// Check for jump-through platforms
+// Check for jump-through platforms and for keydown for moving through them
 if(keyboard_check(k_dwn)) {
     onjt = false;
 } else {
@@ -203,6 +205,20 @@ repeat (abs(ceil(vspd))) {
             <kind>1</kind>
             <string>draw_self();
 
+var shield_direction = point_direction(x, y, mouse_x, mouse_y);
+
+if(shield_direction &gt; 215 &amp;&amp; shield_direction &lt; 270){
+    shield_direction = 215;
+} else if(shield_direction &lt; 325 &amp;&amp; shield_direction &gt;= 270){
+    shield_direction = 325;
+}
+
+
+draw_sprite_ext(spr_shield, 1, x, y - 25, 1, sign(mouse_x - x), shield_direction , c_white, 1);
+
+draw_sprite_ext(spr_spear, 0, x, y - 10, sign(mouse_x - x) * 2, 2 * 1, shield_direction - 90 , c_white, 1);
+
+
 var inst;
 inst = instance_place(x, y, all);
 
@@ -213,6 +229,8 @@ if (inst == noone) {
 draw_set_alpha(1);
 draw_set_color(c_white);
 draw_set_halign(fa_center);
+
+
 
 switch (inst.object_index) {
     case obj_door:

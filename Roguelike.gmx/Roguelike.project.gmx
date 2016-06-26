@@ -12,6 +12,8 @@
     <sprite>sprites\spr_npc_lady</sprite>
     <sprite>sprites\spr_house</sprite>
     <sprite>sprites\spr_door</sprite>
+    <sprite>sprites\spr_shield</sprite>
+    <sprite>sprites\spr_spear</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -29,6 +31,8 @@
     <object>objects\obj_npc_lady</object>
     <object>objects\obj_house</object>
     <object>objects\obj_door</object>
+    <object>objects\object9</object>
+    <object>objects\obj_shield</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
