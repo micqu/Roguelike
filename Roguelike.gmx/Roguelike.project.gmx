@@ -12,7 +12,6 @@
     <sprite>sprites\spr_npc_lady</sprite>
     <sprite>sprites\spr_house</sprite>
     <sprite>sprites\spr_door</sprite>
-    <sprite>sprites\spr_e_cow</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -33,7 +32,6 @@
     <object>objects\obj_npc_lady</object>
     <object>objects\obj_house</object>
     <object>objects\obj_door</object>
-    <object>objects\obj_e_cow</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
