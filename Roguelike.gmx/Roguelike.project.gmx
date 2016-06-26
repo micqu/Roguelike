@@ -15,6 +15,7 @@
     <sprite>sprites\spr_sword</sprite>
     <sprite>sprites\spr_enemy_chicken</sprite>
     <sprite>sprites\spr_enemy_warrior</sprite>
+    <sprite>sprites\spr_light_round</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -24,6 +25,7 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_c</object>
+    <object>objects\obj_light_control</object>
     <object>objects\obj_player</object>
     <objects name="Parents">
       <object>objects\par_wall</object>

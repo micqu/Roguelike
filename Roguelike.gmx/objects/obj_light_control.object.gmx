@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-999999</depth>
+  <depth>-9999</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,13 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//instance_create(x, y, obj_light_control);
+            <string>surf = surface_create(view_wview, view_hview);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,23 +48,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
-draw_set_alpha(1);
-draw_set_halign(fa_right);
-
-draw_text(view_wview - 20, 20, fps);
-
-if (instance_exists(obj_player)) {
-    draw_set_halign(fa_left);
-    draw_text(20, 20, "hspd: " + string(obj_player.hspd));
-    draw_text(20, 40, "vspd: " + string(obj_player.vspd));
+            <string>if (surface_exists(surf)) {
+    surface_set_target(surf);
+    draw_clear_alpha(c_black, 0.75);
+    
+    draw_set_blend_mode(bm_subtract);
+    draw_sprite_ext(spr_light_round, 0, obj_player.x - view_xview, obj_player.y - view_yview, 3, 3, 0, c_blue, 0.9);
+    draw_set_blend_mode(bm_normal);
+    
+    surface_reset_target();
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="27">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -81,7 +80,9 @@ if (instance_exists(obj_player)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>game_end();
+            <string>if (surface_exists(surf)) {
+    draw_surface(surf, view_xview, view_yview);
+}
 </string>
           </argument>
         </arguments>
