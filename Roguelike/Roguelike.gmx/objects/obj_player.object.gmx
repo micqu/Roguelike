@@ -70,16 +70,13 @@ jump = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_weapon){
+            <string>with (obj_weapon) {
     x = other.x + 2 * sign(other.image_xscale);
-    y = other.y - 12;
+    y = other.y + 13;
 }
-
 
 // Limit player to room width
 x = median(-sprite_width * 0.5, x, room_width - sprite_width * 0.5);
-
-
 
 // Update view
 // Formula: x -= (target.x - x) * speed;
@@ -87,11 +84,7 @@ var xx, yy;
 xx = view_xview - (view_xview + view_wview * 0.5 - x - image_xscale * 48) * 0.1;
 yy = median(0, view_yview - (view_yview + view_hview * 0.5 - y) * 0.2, room_height - view_hview);
 
-
-
 scr_view_update(xx, yy, -1, intensity, time);
-
-
 </string>
           </argument>
         </arguments>
@@ -118,21 +111,22 @@ scr_view_update(xx, yy, -1, intensity, time);
 
 // Get direction
 dir_x = (keyboard_check(k_rgt) - keyboard_check(k_lft));
-//image_speed = 0.2;
 
 if (dir_x == 0) {
-    //image_speed = 0;
-    //image_index = 1;
-    
     hspd -= fric * sign(hspd);
 } else {
     hspd = median(-max_hspd, hspd + (acc * sign(dir_x)), max_hspd);
 }
 
-image_xscale = sign(mouse_x - x);
+if (sign(mouse_x - x) != 0) {
+    image_xscale = sign(mouse_x - x);
+}
 
-if(sign(mouse_x - x) != sign(dir_x)){
-    hspd *= 0.8;
+// Walk slowly backwards
+if (sign(mouse_x - x) != sign(dir_x)){
+    max_hspd = 4;
+} else {
+    max_hspd = 6;
 }
 
 // Walking animation
@@ -141,9 +135,6 @@ if (abs(hspd) &gt; 1) {
 } else {
     image_speed = 0;
     image_index = 1;
-    /*if (image_index == 0 || image_index == 2) {
-        image_index += 1;
-    }*/
 }
 
 // Move horizontally
