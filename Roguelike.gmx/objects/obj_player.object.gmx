@@ -30,6 +30,8 @@
 intensity = 16;
 time = room_speed * 0.2;
 
+showAccessibleText = false;
+
 k_jmp = ord("W");
 k_rgt = ord("D");
 k_lft = ord("A");
@@ -176,6 +178,48 @@ repeat (abs(ceil(vspd))) {
     } else {
         y += sign(vspd);
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+
+var inst;
+inst = instance_place(x, y, all);
+
+if (inst == noone) {
+    exit;
+}
+
+draw_set_alpha(1);
+draw_set_color(c_white);
+draw_set_halign(fa_center);
+
+switch (inst.object_index) {
+    case obj_door:
+        draw_text(x, y - 64, "Press SPACE to enter");
+    break;
+    default:
+    break;
 }
 </string>
           </argument>

@@ -9,6 +9,9 @@
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_wall_jt</sprite>
     <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_npc_lady</sprite>
+    <sprite>sprites\spr_house</sprite>
+    <sprite>sprites\spr_door</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -23,6 +26,9 @@
     <object>objects\par_wall_jt</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_jt</object>
+    <object>objects\obj_npc_lady</object>
+    <object>objects\obj_house</object>
+    <object>objects\obj_door</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
