@@ -33,6 +33,7 @@ time = room_speed * 0.2;
 k_jmp = ord("W");
 k_rgt = ord("D");
 k_lft = ord("A");
+k_dwn = ord("S");
 
 grav = 0.5;
 max_hspd = 6;
@@ -40,10 +41,12 @@ max_vspd = 15;
 acc = 1;
 fric = 0.5;
 
+running = 0;
 dir_x = 0;
 hspd = 0;
 vspd = 0;
 onjt = 0;
+jump = 0;
 b = 1;
 </string>
           </argument>
@@ -97,8 +100,11 @@ scr_view_update(xx, yy, -1, intensity, time);
           <argument>
             <kind>1</kind>
             <string>/// Don't listen to your computer
+
+
 // Get direction
 dir_x = (keyboard_check(k_rgt) - keyboard_check(k_lft));
+image_speed = 0.2;
 
 // Image flipping
 if (dir_x != 0) {
@@ -106,12 +112,16 @@ if (dir_x != 0) {
 }
 
 if (dir_x == 0) {
+    image_speed = 0;
+    image_index = 1;
     hspd -= fric * sign(hspd);
 } else {
     hspd = median(-max_hspd, hspd + (acc * sign(dir_x)), max_hspd);
 }
+    
 
-repeat ceil(abs(hspd)) {
+
+repeat ceil(abs(hspd + hspd * 2 * running)) {
     if (!place_meeting(x + sign(hspd), y, par_wall)) {
         x += sign(hspd);
     } else {
@@ -120,24 +130,36 @@ repeat ceil(abs(hspd)) {
 }
 
 // Check for jump-through platforms
-for (i = 1; i &lt;= 1 + abs(vspd); i += 1;) {
-    var a;
-    a = instance_place(x, y + i, par_wall_jt);
-    
-    if (a &gt; 0) {
-        if (bbox_bottom &lt; a.bbox_top &amp;&amp; vspd &gt; 0 &amp;&amp; !position_meeting(a.x, a.y - 1, par_wall_jt)) {
-            onjt = true;
-            y += i - 1;
-            vspd = 0;
+if(keyboard_check(k_dwn)) {
+    onjt = false;
+} else {
+    for (i = 1; i &lt;= 1 + abs(vspd); i += 1;) {
+        var a;
+        a = instance_place(x, y + i, par_wall_jt);
+        
+        if (a &gt; 0) {
+            if (bbox_bottom &lt; a.bbox_top &amp;&amp; vspd &gt; 0 &amp;&amp; !position_meeting(a.x, a.y - 1, par_wall_jt)) {
+                onjt = true;
+                y += i - 1;
+                vspd = 0;           
+            }
+        } else {
+            onjt = false;
         }
-    } else {
-        onjt = false;
     }
 }
 
+
+
+
 // Jump
-if (keyboard_check(k_jmp) &amp;&amp; (place_meeting(x, y + 1, par_wall) || onjt)) {
-    vspd = -15;
+if ((place_meeting(x, y + 1, par_wall) || onjt)) {
+    jump = 0;
+}
+
+if (keyboard_check_pressed(k_jmp) &amp;&amp; jump &lt; 2) {
+    jump ++;
+    vspd = -13;
 }
 
 if (keyboard_check_released(k_jmp) &amp;&amp; vspd &lt; 0) {
