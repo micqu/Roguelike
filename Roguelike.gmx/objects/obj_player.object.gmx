@@ -115,8 +115,12 @@ if (dir_x == 0) {
     
     hspd -= fric * sign(hspd);
 } else {
-    image_xscale = dir_x;
+    image_xscale = sign(mouse_x - x);
     hspd = median(-max_hspd, hspd + (acc * sign(dir_x)), max_hspd);
+}
+
+if(sign(mouse_x - x) != sign(dir_x)){
+    hspd *= 0.8;
 }
 
 // Walking animation
@@ -124,9 +128,10 @@ if (abs(hspd) &gt; 1) {
     image_speed = abs(hspd) * 0.05;
 } else {
     image_speed = 0;
-    if (image_index == 0 || image_index == 2) {
+    image_index = 1;
+    /*if (image_index == 0 || image_index == 2) {
         image_index += 1;
-    }
+    }*/
 }
 
 // Move horizontally
