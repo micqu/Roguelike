@@ -29,6 +29,7 @@
       <sprite>sprites\spr_head_iron_helmet</sprite>
     </sprites>
     <sprite>sprites\spr_saitama</sprite>
+    <sprite>sprites\spr_item_swords</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

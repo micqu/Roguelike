@@ -65,10 +65,10 @@ for (var i = 0; i &lt; inv_len; i ++) {
             <kind>1</kind>
             <string>for (var i = 0; i &lt; inv_len; i += 1;) {
     draw_sprite_ext(spr_inventory, i, view_xview + xx[i], view_yview + yy[i], inv_size, inv_size, image_angle, image_blend, 0.7);
-    
-    if (inv_items[i] != -1) {
-        //draw_sprite(spr_items
-    }
+}
+
+if (inv_items[slot_sword] != -1) {
+    draw_sprite(spr_item_swords, inv_items[slot_sword], view_xview + xx[slot_sword], view_yview + yy[slot_sword]);
 }
 </string>
           </argument>
