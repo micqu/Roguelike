@@ -70,6 +70,10 @@ for (var i = 0; i &lt; inv_len; i ++) {
 if (inv_items[slot_sword] != -1) {
     draw_sprite(spr_item_swords, inv_items[slot_sword], view_xview + xx[slot_sword], view_yview + yy[slot_sword]);
 }
+
+if (inv_items[slot_helm] != -1) {
+    draw_sprite(spr_item_helm, inv_items[slot_helm], view_xview + xx[slot_helm], view_yview + yy[slot_helm]);
+}
 </string>
           </argument>
         </arguments>

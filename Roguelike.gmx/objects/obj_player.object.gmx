@@ -235,8 +235,12 @@ repeat (abs(ceil(vspd))) {
             <kind>1</kind>
             <string>draw_self();
 
-draw_sprite_ext(spr_head_iron_helmet, 0, x, y - 10, image_xscale, 1, 0, c_white, 1);
-
+if(instance_exists(obj_inventory)){
+    var inventory_slot = obj_inventory.inv_items[obj_inventory.slot_helm];
+    if(inventory_slot != -1){
+        draw_sprite_ext(spr_head_helm, inventory_slot, x, y - 12 + 2 * (image_index % 2), image_xscale, 1, 0, c_white, 1);
+    }
+}
 
 </string>
           </argument>

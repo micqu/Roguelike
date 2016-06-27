@@ -17,7 +17,6 @@
     <sprite>sprites\spr_enemy_warrior</sprite>
     <sprite>sprites\spr_light_round</sprite>
     <sprite>sprites\spr_inventory</sprite>
-    <sprite>sprites\spr_items</sprite>
     <sprites name="chest">
       <sprite>sprites\spr_chest_saitama</sprite>
     </sprites>
@@ -26,9 +25,10 @@
     </sprites>
     <sprites name="head">
       <sprite>sprites\spr_head_saitama</sprite>
-      <sprite>sprites\spr_head_iron_helmet</sprite>
+      <sprite>sprites\spr_head_helm</sprite>
     </sprites>
     <sprite>sprites\spr_saitama</sprite>
+    <sprite>sprites\spr_item_helm</sprite>
     <sprite>sprites\spr_item_swords</sprite>
   </sprites>
   <backgrounds name="background"/>
@@ -56,6 +56,7 @@
     <object>objects\obj_weapon</object>
     <object>objects\obj_enemy_chicken</object>
     <object>objects\obj_item_sword_0</object>
+    <object>objects\obj_item_helm_0</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
