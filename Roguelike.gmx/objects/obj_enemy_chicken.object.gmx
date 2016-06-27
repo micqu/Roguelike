@@ -107,6 +107,8 @@ if (justTurned == false) {
 if (dir_x != 0) {
     image_speed = 0.2;
     moving = true;
+} else {
+    image_speed = 0.02;
 }
 
 alarm[0] = 30 + random(1) * room_speed;
