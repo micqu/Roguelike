@@ -62,7 +62,8 @@ grav = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>able_to_get_hit = true;
+            <string>/// Reset able to get hit
+able_to_get_hit = true;
 </string>
           </argument>
         </arguments>
@@ -88,7 +89,7 @@ grav = 1;
             <string>/// Destroy instance
 instance_destroy();
 
-instance_create(x, y, obj_item_magic);
+instance_create(x, y, obj_item_sword_0);
 </string>
           </argument>
         </arguments>

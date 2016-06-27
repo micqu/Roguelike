@@ -43,7 +43,7 @@
     <object>objects\obj_door</object>
     <object>objects\obj_weapon</object>
     <object>objects\obj_enemy_chicken</object>
-    <object>objects\obj_item_magic</object>
+    <object>objects\obj_item_sword_0</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>

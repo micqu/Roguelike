@@ -28,41 +28,19 @@
             <string>inv_len = 6;
 inv_size = 1;
 
-total_len = 20 + inv_len;
-inventory = ds_list_create();
+slot_sword = 0;
+slot_shield = 1;
+slot_helm = 2;
+slot_chest = 3;
+slot_boots = 4;
+slot_jewelry = 5;
 
-// Set first value to number of available slots
-ds_list_add(inventory, total_len);
-
-// Fill list with 0 to indicate free slots
-for (var i = 1; i &lt; (total_len + 1); i ++) {
-    ds_list_add(inventory, -1);
+var w; w = sprite_get_width(spr_inventory);
+for (var i = 0; i &lt; inv_len; i ++) {
+    inv_items[i] = -1;
+    xx[i] = (view_wview * .5) - (inv_len * w * inv_size * 0.5) + (i * w * inv_size);
+    yy[i] = view_hview - (w * inv_size);
 }
-
-show_inventory = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="3">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>ds_list_destroy(inventory);
 </string>
           </argument>
         </arguments>
@@ -85,58 +63,13 @@ show_inventory = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var w, xx, yy;
-w = sprite_get_width(spr_inventory);
-
-for (var i = 0; i &lt; inv_len; i += 1;) {
-    xx = (view_wview * .5) - (inv_len * w * inv_size * 0.5) + (i * w * inv_size);
-    yy = view_hview - (w * inv_size);
-    draw_sprite_ext(spr_inventory, 0, view_xview + xx, view_yview + yy, inv_size, inv_size, image_angle, image_blend, 0.7);
+            <string>for (var i = 0; i &lt; inv_len; i += 1;) {
+    draw_sprite_ext(spr_inventory, i, view_xview + xx[i], view_yview + yy[i], inv_size, inv_size, image_angle, image_blend, 0.7);
     
-    var item_index;
-    item_index = ds_list_find_value(inventory, i + 1);
-    if (item_index != -1) {
-        draw_sprite(spr_items, item_index, view_xview + xx, view_yview + yy);
+    if (inv_items[i] != -1) {
+        //draw_sprite(spr_items
     }
 }
-
-if (show_inventory) {
-    var xx, yy;
-    for (var i = 0; i &lt; total_len - inv_len; i ++) {
-        xx = view_wview * 0.3 + (i mod 4) * sprite_get_width(spr_items);
-        yy = view_hview * 0.2 + floor(i / 4) * sprite_get_height(spr_items);
-        draw_sprite_ext(spr_inventory, 0, view_xview + xx, view_yview + yy, 1, 1, 0, c_white, 1);
-        
-        var item_index;
-        item_index = ds_list_find_value(inventory, i + inv_len + 1);
-        if (item_index != -1) {
-            draw_sprite(spr_items, item_index, view_xview + xx, view_yview + yy);
-        }
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="70">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>show_inventory = !show_inventory;
 </string>
           </argument>
         </arguments>
