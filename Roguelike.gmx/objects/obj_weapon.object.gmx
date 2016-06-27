@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>weapon_damage = 1;
 
+image_speed = 0;
+image_index = 2;
+
 attacking = 0;
 attack_angle = 0;
 attack_direction = 1;

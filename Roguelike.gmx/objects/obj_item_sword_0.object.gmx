@@ -41,7 +41,7 @@ if (instance_exists(obj_inventory)) {
 
 // Image index in swords sprite
 // Same index is used in items sprite
-item_id = 0;
+item_id = choose(0, 1);
 
 image_speed = 0;
 image_index = item_id;
@@ -91,6 +91,20 @@ ground_desty = -1;
         
         if (spd &lt; 10) {
             obj_inventory.inv_items[obj_inventory.slot_sword] = item_id;
+            with(obj_weapon){
+                image_index = other.item_id;
+                switch(other.item_id){
+                    case 0:
+                        weapon_damage = 4;
+                        break;
+                    case 1:
+                        weapon_damage = 2;
+                        break;
+                    default:
+                        weapon_damage = 1;
+                        break;
+                }
+            }
             instance_destroy();
         }
     }
