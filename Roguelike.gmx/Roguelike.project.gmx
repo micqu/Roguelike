@@ -18,6 +18,17 @@
     <sprite>sprites\spr_light_round</sprite>
     <sprite>sprites\spr_inventory</sprite>
     <sprite>sprites\spr_items</sprite>
+    <sprites name="chest">
+      <sprite>sprites\spr_chest_saitama</sprite>
+    </sprites>
+    <sprites name="feet">
+      <sprite>sprites\spr_feet_saitama</sprite>
+    </sprites>
+    <sprites name="head">
+      <sprite>sprites\spr_head_saitama</sprite>
+      <sprite>sprites\spr_head_iron_helmet</sprite>
+    </sprites>
+    <sprite>sprites\spr_saitama</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
