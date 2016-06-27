@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>hp = 4;
 
+dir_x = 0;
+moving = false;
+fric = 0.2;
 hspd = 0;
 vspd = 0;
 max_vspd = 11;
@@ -58,7 +61,8 @@ justTurned = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspd = 0;
+            <string>dir_x = 0;
+moving = false;
 image_speed = 0;
 
 if (place_meeting(x + image_xscale * sprite_width, y, par_wall)) {
@@ -69,14 +73,15 @@ if (place_meeting(x + image_xscale * sprite_width, y, par_wall)) {
 }
 
 if (justTurned == false) {
-    hspd = choose(image_xscale, 0, 0);
+    dir_x = choose(image_xscale, 0, 0);
 } else {
-    hspd = image_xscale;
+    dir_x = image_xscale;
     justTurned = false;
 }
 
-if (hspd != 0) {
+if (dir_x != 0) {
     image_speed = 0.2;
+    moving = true;
 }
 
 alarm[0] = 30 + random(1) * room_speed;
@@ -108,6 +113,12 @@ grounded = (place_meeting(x, y + 1, par_wall) || place_meeting(x, y + 1, par_wal
 
 vspd = median(-max_vspd, max_vspd, vspd + !grounded * grav);
 
+if (dir_x == 0) {
+    hspd -= fric * sign(hspd);
+} else {
+    hspd = dir_x;
+}
+
 // Horizontal wall collision
 repeat ceil(abs(hspd)) {
     if (!place_meeting(x + sign(hspd), y, par_wall)) {
@@ -125,6 +136,11 @@ repeat (abs(ceil(vspd))) {
     } else {
         y += sign(vspd);
     }
+}
+
+// Death
+if (hp &lt;= 0) {
+    instance_destroy();
 }
 </string>
           </argument>
