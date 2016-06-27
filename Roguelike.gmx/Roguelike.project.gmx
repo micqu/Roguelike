@@ -27,6 +27,7 @@
     <object>objects\obj_c</object>
     <object>objects\obj_light_control</object>
     <object>objects\obj_player</object>
+    <object>objects\obj_text_on_hit</object>
     <objects name="Parents">
       <object>objects\par_wall</object>
       <object>objects\par_wall_jt</object>
@@ -39,7 +40,6 @@
     <object>objects\obj_door</object>
     <object>objects\obj_weapon</object>
     <object>objects\obj_enemy_chicken</object>
-    <object>objects\obj_text_on_hit</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>

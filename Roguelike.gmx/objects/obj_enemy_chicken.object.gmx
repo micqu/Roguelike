@@ -26,6 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>hp = 4;
+dead = false;
+
+alarm[0] = random(2) * room_speed;
+justTurned = false;
+image_speed = 0;
 
 dir_x = 0;
 moving = false;
@@ -34,11 +39,30 @@ hspd = 0;
 vspd = 0;
 max_vspd = 11;
 grav = 1;
-
-alarm[0] = random(2) * room_speed;
-
-image_speed = 0;
-justTurned = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Destroy instance
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -61,7 +85,8 @@ justTurned = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir_x = 0;
+            <string>/// Move like chicken
+dir_x = 0;
 moving = false;
 image_speed = 0;
 
@@ -140,7 +165,39 @@ repeat (abs(ceil(vspd))) {
 
 // Death
 if (hp &lt;= 0) {
-    instance_destroy();
+    // Death animation setup
+    if (dead == false) {
+        image_index = 4;
+        image_speed = 0.2;
+        alarm[0] = 0;
+        dir_x = 0;
+        
+        dead = true;
+    }
+} else {
+    // Normal movement animation
+    if (dir_x == 0) {
+        // Idle
+        if (image_index &gt;= 11) {
+            image_index = 8;
+        } else if (image_index &lt; 8) {
+            image_index = 8;
+        }
+    } else {
+        if (image_index &gt;= 3) {
+            image_index = 0;
+        }
+    }
+}
+
+// Death animation
+if (dead == true &amp;&amp; (image_index &gt;= 7)) {
+    image_speed = 0;
+    image_index = 7;
+    
+    if (alarm[1] &lt;= 0) {
+        alarm[1] = 1 * room_speed;
+    }
 }
 </string>
           </argument>
