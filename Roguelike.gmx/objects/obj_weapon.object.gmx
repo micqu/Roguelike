@@ -111,7 +111,8 @@ if (attacking) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (attacking &amp;&amp; !hit) {
+            <string>/*
+if (attacking &amp;&amp; !hit) {
     with (other) {
         var hit_text = instance_create(x, y - sprite_height * 0.5, obj_text_on_hit);
         hit_text.text = string(other.weapon_damage);
@@ -123,6 +124,7 @@ if (attacking) {
     
     hit = true;
 }
+*/
 </string>
           </argument>
         </arguments>

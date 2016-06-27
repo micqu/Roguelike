@@ -16,7 +16,8 @@
     <sprite>sprites\spr_enemy_chicken</sprite>
     <sprite>sprites\spr_enemy_warrior</sprite>
     <sprite>sprites\spr_light_round</sprite>
-    <sprite>sprites\spr_inventory_hotbar</sprite>
+    <sprite>sprites\spr_inventory</sprite>
+    <sprite>sprites\spr_items</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -42,6 +43,7 @@
     <object>objects\obj_door</object>
     <object>objects\obj_weapon</object>
     <object>objects\obj_enemy_chicken</object>
+    <object>objects\obj_item_magic</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
