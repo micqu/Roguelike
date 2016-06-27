@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>//instance_create(x, y, obj_light_control);
+instance_create(x, y, obj_inventory);
 
 show_debug_info = true;
 </string>
