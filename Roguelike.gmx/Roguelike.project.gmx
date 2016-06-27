@@ -17,7 +17,7 @@
     <sprite>sprites\spr_enemy_warrior</sprite>
     <sprite>sprites\spr_light_round</sprite>
     <sprite>sprites\spr_inventory</sprite>
-    <sprite>sprites\spr_items</sprite>
+    <sprite>sprites\spr_item_swords</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
