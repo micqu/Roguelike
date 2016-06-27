@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>//instance_create(x, y, obj_light_control);
+
+show_debug_info = true;
 </string>
           </argument>
         </arguments>
@@ -48,18 +50,74 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_black);
+            <string>draw_set_color(c_white);
 draw_set_alpha(1);
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
 
-draw_text(view_wview - 20, 20, fps);
-
-if (instance_exists(obj_player)) {
-    draw_set_halign(fa_left);
-    draw_text(20, 20, "hspd: " + string(obj_player.hspd));
-    draw_text(20, 40, "vspd: " + string(obj_player.vspd));
+if (show_debug_info) {
+    draw_text(view_wview - 20, 20, fps);
+    
+    if (instance_exists(obj_player)) {
+        draw_set_halign(fa_left);
+        draw_text(20, 20, "hspd: " + string(obj_player.hspd));
+        draw_text(20, 40, "vspd: " + string(obj_player.vspd));
+    }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="113">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Toggle lighting
+if (!instance_exists(obj_light_control)) {
+    instance_create(x, y, obj_light_control);
+} else {
+    with (obj_light_control) {
+        instance_destroy();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="112">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Toggle debug info
+show_debug_info = !show_debug_info;
 </string>
           </argument>
         </arguments>
