@@ -73,6 +73,14 @@ jump = 0;
             <string>with(obj_weapon){
     x = other.x + 2 * sign(other.image_xscale);
     y = other.y + 13;
+    
+    if (other.image_xscale == 1){
+        image_angle = point_direction(x, y, mouse_x, mouse_y) - 45 - attack_angle;
+        image_xscale = 1;
+    } else {
+        image_angle = point_direction(x, y, mouse_x, mouse_y) - 135 + attack_angle;
+        image_xscale = -1;
+    }
 }
 
 
