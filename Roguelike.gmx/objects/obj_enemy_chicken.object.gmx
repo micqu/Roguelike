@@ -90,10 +90,10 @@ able_to_get_hit = true;
 instance_destroy();
 
 if(random(100) &lt; 50){
-    instance_create(x, y, obj_item_sword_0);
+    instance_create(x, y, obj_item_sword);
 }
 else{
-    instance_create(x, y, obj_item_helm_0);
+    instance_create(x, y, obj_item_helm);
 }
 </string>
           </argument>

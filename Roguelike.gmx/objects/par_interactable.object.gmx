@@ -69,7 +69,7 @@ draw_set_valign(fa_top);
 draw_text(obj_player.x, obj_player.y - 64, text);
 
 if (keyboard_check_pressed(vk_space)) {
-    event_user(0);
+    event_user(15);
 }
 </string>
           </argument>

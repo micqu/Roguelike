@@ -47,6 +47,7 @@
       <object>objects\par_wall</object>
       <object>objects\par_wall_jt</object>
       <object>objects\par_interactable</object>
+      <object>objects\par_item</object>
     </objects>
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_jt</object>
@@ -55,8 +56,8 @@
     <object>objects\obj_door</object>
     <object>objects\obj_weapon</object>
     <object>objects\obj_enemy_chicken</object>
-    <object>objects\obj_item_sword_0</object>
-    <object>objects\obj_item_helm_0</object>
+    <object>objects\obj_item_sword</object>
+    <object>objects\obj_item_helm</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>
