@@ -34,6 +34,8 @@ attacking = 0;
 attack_angle = 0;
 attack_direction = 1;
 hit = false;
+
+image_yscale = 4;
 </string>
           </argument>
         </arguments>
