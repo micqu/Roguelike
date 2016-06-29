@@ -40,6 +40,9 @@ hspd = 0;
 vspd = 0;
 max_vspd = 11;
 grav = 1;
+
+can_choose_idle_anim = true;
+idle_anim = -1;
 </string>
           </argument>
         </arguments>
@@ -121,8 +124,9 @@ else{
 dir_x = 0;
 moving = false;
 image_speed = 0;
+can_choose_idle_anim = true;
 
-if (place_meeting(x + image_xscale * sprite_width, y, par_wall)) {
+if (place_meeting(x + image_xscale * sprite_width, y, par_wall) || !place_meeting(x + image_xscale * sprite_width, y + 16, par_all_walls)) {
     image_xscale *= -1;
     justTurned = true;
 } else {
@@ -139,11 +143,9 @@ if (justTurned == false) {
 if (dir_x != 0) {
     image_speed = 0.2;
     moving = true;
-} else {
-    image_speed = 0.02;
 }
 
-alarm[0] = 30 + random(1) * room_speed;
+alarm[0] = room_speed + random(1) * room_speed;
 </string>
           </argument>
         </arguments>
@@ -168,7 +170,7 @@ alarm[0] = 30 + random(1) * room_speed;
             <kind>1</kind>
             <string>// Gravity
 var grounded;
-grounded = (place_meeting(x, y + 1, par_wall) || place_meeting(x, y + 1, par_wall_jt));
+grounded = place_meeting(x, y + 1, par_all_walls);
 
 vspd = median(-max_vspd, max_vspd, vspd + !grounded * grav);
 
@@ -183,6 +185,7 @@ repeat ceil(abs(hspd)) {
     if (!place_meeting(x + sign(hspd), y, par_wall)) {
         x += sign(hspd);
     } else {
+        // Jump
         if (vspd == 0 &amp;&amp; grounded)
             vspd = -8 - random(4);
     }
@@ -190,7 +193,7 @@ repeat ceil(abs(hspd)) {
 
 // Vertical wall collision
 repeat (abs(ceil(vspd))) {
-    if (place_meeting(x, y + sign(vspd), par_wall)) {
+    if (place_meeting(x, y + sign(vspd), par_all_walls)) {
         vspd = 0;
     } else {
         y += sign(vspd);
@@ -211,11 +214,23 @@ if (hp &lt;= 0) {
 } else {
     // Normal movement animation
     if (dir_x == 0) {
-        // Idle
-        if (image_index &gt;= 11) {
-            image_index = 8;
-        } else if (image_index &lt; 8) {
-            image_index = 8;
+        if (can_choose_idle_anim == true) {
+            idle_anim = choose(0, 1);
+            can_choose_idle_anim = false;
+        }
+        
+        if (idle_anim == 0) {
+            // Idle 0
+            image_speed = 0.02;
+            if (image_index &gt;= 11) {
+                image_index = 8;
+            } else if (image_index &lt; 8) {
+                image_index = 8;
+            }
+        } else {
+            // Idle 1
+            image_speed = 0;
+            image_index = 0;
         }
     } else {
         if (image_index &gt;= 3) {

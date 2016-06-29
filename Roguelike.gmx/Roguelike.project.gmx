@@ -44,6 +44,7 @@
     <object>objects\obj_player</object>
     <object>objects\obj_text_on_hit</object>
     <objects name="Parents">
+      <object>objects\par_all_walls</object>
       <object>objects\par_wall</object>
       <object>objects\par_wall_jt</object>
       <object>objects\par_interactable</object>

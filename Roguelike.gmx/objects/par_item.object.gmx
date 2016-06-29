@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>drawSelf = true;
+            <string>depth = -10;
+
+drawSelf = true;
 text = "";
 
 if (instance_exists(obj_inventory)) {
