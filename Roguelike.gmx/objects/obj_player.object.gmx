@@ -144,7 +144,12 @@ if (sign(mouse_x - x) != 0) {
 // Walking animation
 if (abs(hspd) &gt; 1) {
     if(image_index == 8){
-        image_index = 0;
+        if(hspd &gt; 0){
+            image_index = 0;
+        }
+        else{
+            image_index = 7;
+        }
     }
 
     // Walk slowly backwards and reverse image speed
@@ -259,10 +264,8 @@ if(instance_exists(obj_inventory)){
 
 var image_direction = sign(image_xscale);
 
-
-
 draw_sprite_ext(spr_head, 0, x, y - 14 - offset_array[image_index], image_direction, 1, point_direction(x, y - 14, mouse_x, mouse_y) - 180 * (image_direction == -1), c_white, 1);
-
+w
 </string>
           </argument>
         </arguments>
