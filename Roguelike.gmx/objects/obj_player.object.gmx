@@ -71,18 +71,16 @@ jump = 0;
           <argument>
             <kind>1</kind>
             <string>with (obj_weapon){
-    x = other.x + 2 * sign(other.image_xscale);
+    x = other.x;
     y = other.y + 13;
     
-    if (other.image_xscale == 1){
-        image_angle = point_direction(x, y, mouse_x, mouse_y) - 45 - attack_angle;
-    } else {
-        image_angle = point_direction(x, y, mouse_x, mouse_y) - 135 + attack_angle;
+    image_angle = point_direction(x, y, mouse_x, mouse_y);
+    if (other.image_xscale == -1){
+        image_angle -= 180;
     }
     
     image_xscale = image_yscale * sign(other.image_xscale);
 }
-
 
 // Limit player to room width
 x = median(-sprite_width * 0.5, x, room_width - sprite_width * 0.5);
@@ -241,7 +239,6 @@ if(instance_exists(obj_inventory)){
         draw_sprite_ext(spr_head_helm, inventory_slot, x, y - 12 + 2 * (image_index % 2), image_xscale, 1, 0, c_white, 1);
     }
 }
-
 </string>
           </argument>
         </arguments>

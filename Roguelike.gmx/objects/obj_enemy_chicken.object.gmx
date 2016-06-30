@@ -48,30 +48,6 @@ idle_anim = -1;
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Reset able to get hit
-able_to_get_hit = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -93,7 +69,7 @@ able_to_get_hit = true;
 instance_destroy();
 
 if(random(100) &lt; 50){
-    instance_create(x, y, obj_item_sword);
+    instance_create(x, y, obj_item_mod);
 }
 else{
     instance_create(x, y, obj_item_helm);
@@ -247,39 +223,6 @@ if (dead == true &amp;&amp; (image_index &gt;= 7)) {
     if (alarm[1] &lt;= 0) {
         alarm[1] = 1 * room_speed;
     }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_weapon">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (other.attacking &amp;&amp; able_to_get_hit == true) {
-    var hit_text = instance_create(x, y - sprite_height * 0.5, obj_text_on_hit);
-    hit_text.text = string(other.weapon_damage);
-    hp -= other.weapon_damage;
-    
-    hspd = other.image_xscale * 5;
-    vspd -= 2;
-    
-    alarm[2] = 11;
-    able_to_get_hit = false;
 }
 </string>
           </argument>
