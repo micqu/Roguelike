@@ -32,6 +32,12 @@
     <sprite>sprites\spr_item_helm</sprite>
     <sprite>sprites\spr_item_mod</sprite>
     <sprite>sprites\spr_bullet</sprite>
+    <sprites name="Main character">
+      <sprite>sprites\spr_body</sprite>
+      <sprite>sprites\spr_head</sprite>
+      <sprite>sprites\spr_mainhand</sprite>
+      <sprite>sprites\spr_offhand</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

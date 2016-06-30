@@ -229,6 +229,11 @@ if (instance_exists(obj_inventory)){
                                                         y + lengthdir_y(muzzle_len, muzzle_ang + a + image_angle), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
     }
 }
+
+with(obj_player){
+    draw_sprite_ext(spr_mainhand, 0, x - 5 * sign(image_xscale), y - 5 - offset_array[image_index], sign(image_xscale), 1, 0, c_white, 1);
+}
+
 </string>
           </argument>
         </arguments>
